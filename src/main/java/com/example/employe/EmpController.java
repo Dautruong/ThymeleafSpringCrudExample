@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class EmpController {
 	
 	private EmpService empService = new EmpServiceImpl();
-
+	List emplList = empService.findAll();
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(Model model) {
         List emplList = empService.findAll();
@@ -21,16 +21,20 @@ public class EmpController {
         return "index";
     }
 
-	@RequestMapping("/new")
-	public String showNewProductPage(Model model, @ModelAttribute("employee") Employee employee) {
-		List emplList = empService.findAll();
+	@RequestMapping(value =  "/new" )
+	public String show(Model model, @ModelAttribute("employee") Employee employee) {
+		return "newEmployee";
+	}
+	@RequestMapping(value =  "/edit",  method = RequestMethod.POST )
+	public String editEmp(Model model, @ModelAttribute("employee") Employee employee) {
 		employee.setId(emplList.size() +1);
 		model.addAttribute("employee", new Employee());
-		return "newEmployee";
+		empService.save(employee);
+		return "redirect:/index";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("employee") Employee employee) {
+	public String save(Model model, @ModelAttribute("employee") Employee employee) {
 		empService.save(employee);
 	    return "redirect:/index";
 	}

@@ -34,7 +34,6 @@ public class EmpServiceImpl implements EmpService {
 	@Override
 	public void update(int id, Employee employee) {
 		employees.put(id, employee);
-		
 	}
 
 	@Override
