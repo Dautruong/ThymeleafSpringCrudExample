@@ -10,10 +10,11 @@ public class EmpServiceImpl implements EmpService {
 	
 	static {
 		employees = new HashMap<>();
-		employees.put(1, new Employee(1, "Dau", 22));
-		employees.put(2, new Employee(2, "Quang", 33));
-		employees.put(3, new Employee(3, "Truong", 44));
-		employees.put(4, new Employee(4, "admin", 55));
+		employees.put(1, new Employee(1, "Dau", 11));
+		employees.put(2, new Employee(2, "Quang", 22));
+		employees.put(3, new Employee(3, "Truong", 33));
+		employees.put(4, new Employee(4, "Admin", 44));
+		employees.put(5, new Employee(5, "custumer", 55));
     }
 	@Override
 	public List<Employee> findAll() {

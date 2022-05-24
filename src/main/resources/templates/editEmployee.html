@@ -3,10 +3,10 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title>Edit Product</title>
+<title>Edit Employee</title>
 </head>
 <body>
-	<div align="center">
+	<div >
 		<h1>Edit employee</h1>
 		<br />
 		<form action="#" th:action="@{/save}" th:object="${employee}"
@@ -16,7 +16,7 @@
 			<!-- 
 				<tr>				
 					<td>Employee ID:</td>
-					<td>
+					<td>align="center"
 						<input type="text" th:field="*{id}" readonly="readonly" />
 					</td>
 				</tr>	-->
@@ -33,8 +33,10 @@
 				</tr>
 										
 				<tr>
+					<td colspan="2"><a href="/index">back</a> </td>
 					<td colspan="2"><button type="submit">Save</button> </td>
 				</tr>
+				
 			</table>
 		</form>
 	</div>
