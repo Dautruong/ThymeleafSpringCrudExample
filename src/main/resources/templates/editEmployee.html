@@ -9,22 +9,20 @@
 	<div >
 		<h1>Edit employee</h1>
 		<br />
-		<form action="#" th:action="@{/save}" th:object="${employee}"
-			method="post">
-
-			<table border="0" cellpadding="10">
-			<!-- 
-				<tr>				
+		<form action="#" th:action="@{/save}" th:object="${employee}" method="post">
+			<table cellpadding="20">
+			 <input type="hidden" th:field="*{id}">  
+				<!-- <tr>				
 					<td>Employee ID:</td>
-					<td>align="center"
+					<td>
 						<input type="text" th:field="*{id}" readonly="readonly" />
 					</td>
-				</tr>	-->
-				   <input type="hidden" th:field="*{id}">  		
+				</tr>	<td>align="center"	
+				  	--> 
 				<tr>				
 					<td>Name:</td>
 					<td>
-						<input type="text" th:field="*{name}" />
+						<input type="text" th:field="${employee.name}" />
 					</td>
 				</tr>
 				<tr>
@@ -36,7 +34,6 @@
 					<td colspan="2"><a href="/index">back</a> </td>
 					<td colspan="2"><button type="submit">Save</button> </td>
 				</tr>
-				
 			</table>
 		</form>
 	</div>

@@ -26,8 +26,7 @@ public class EmpController {
 	}
 	@RequestMapping(value =  "/edit",  method = RequestMethod.POST )
 	public String editEmp(Model model, @ModelAttribute("employee") Employee employee) {
-		List emplList = empService.findAll();
-		employee.setId(emplList.size() +1);
+		employee.setId((int)(Math.random() * 100));
 		model.addAttribute("employee", new Employee());
 		empService.save(employee);
 		return "redirect:/index";
@@ -40,15 +39,15 @@ public class EmpController {
 	}
 	
 	@RequestMapping("/edit/{id}")
-	public String Edit(@PathVariable(name = "id") int id, @ModelAttribute("employee") Employee employee, Model model) {
-		List emplList = empService.findAll();
-	    model.addAttribute("employees", emplList);
+	public String Edit(@PathVariable("id") int id, @ModelAttribute("employee") Employee employee, Model model) {
+		employee = empService.findById(id);
+		model.addAttribute("employee",employee);
 		empService.update(id, employee);
 		return "editEmployee";
 	}
 	
 	@RequestMapping("/delete/{id}")
-	public String deleteProduct(@PathVariable("id") int id) {
+	public String delete(@PathVariable("id") int id) {
 		empService.remove(id);
 	    return "redirect:/index";       
 	}
